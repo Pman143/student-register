@@ -1,18 +1,17 @@
-<mat-toolbar color="primary">
-  <span (click)="onNavigateHome()" style="cursor: pointer">Student Register</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
-<br>
-<br>
-
-<div class="container">
+<div class="container-fluid">
+  <mat-toolbar color="primary">
+    <span (click)="onNavigateHome()" style="cursor: pointer">Student Register</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <br>
+  <br>
   <div class="row">
-    <div class="col-3">
-      <app-student-list [students]="students"></app-student-list>
+    <div class="col-5">
+      <app-student-list *ngIf="students" [students]="students"></app-student-list>
     </div>
     <div style="margin-right: 10px;"></div>
-    <div class="col-8">
-      <app-student-register></app-student-register>
+    <div class="col-6">
+      <app-student-register *ngIf="students" [students]="students"></app-student-register>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Student} from '../../interfaces/Student';
 
 @Component({
@@ -6,7 +6,7 @@ import {Student} from '../../interfaces/Student';
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit, OnChanges {
 
   @Input() students: Student[];
 
@@ -14,7 +14,9 @@ export class StudentListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   // console.log(this.students[0].studentResidentialAddress);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
   }
 
 }

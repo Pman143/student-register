@@ -3,6 +3,7 @@ import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Student} from '../interfaces/Student';
 import {map, tap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 const FIREBASE_URL = 'https://student-registration2.firebaseio.com/student.json';
 
@@ -13,7 +14,7 @@ export class StudentService {
   private studentSubject = new BehaviorSubject<Student[]>([]);
   student$ = this.studentSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
   }
 
   registerStudent(student: Student) {
@@ -53,5 +54,11 @@ export class StudentService {
 
   removeStudent(student: Student) {
     return this.http.delete(`https://student-registration2.firebaseio.com/student/${student.studentKey}.json`).pipe();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
   }
 }

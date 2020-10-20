@@ -1,16 +1,15 @@
-<div class="row">
-  <mat-card>
-    <h1>Registered student list</h1>
-    <mat-accordion displayMode="default" [hideToggle]="true" style="width: 90%;">
-      <mat-expansion-panel *ngFor="let student of students" [routerLink]="['../student-details']">
-        <br>
-        <mat-expansion-panel-header>
-          <div class="col-md-8">{{student.studentName}} {{student.studentSurname}}</div>
-          <div class="col-sm-1">Expand</div>
-          <br>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </mat-accordion>
-      <br>
-  </mat-card>
-</div>
+<mat-card style="width: 100%">
+  <h1>Registered student list</h1>
+  <mat-accordion displayMode="default" [hideToggle]="true" style="width: 90%;" *ngIf="students.length">
+    <mat-expansion-panel *ngFor="let student of students" [routerLink]="['../student-details']"
+                         style="margin-top: 2px;">
+      <mat-expansion-panel-header>
+        <div class="col-md-8">{{student.studentName}} {{student.studentSurname}}</div>
+        <div class="col-sm-1">Expand</div>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <h4 class="text-warning" *ngIf="!students.length">There are no registered student as yet, Please register</h4>
+  <br>
+  <mat-spinner color="warn" *ngIf="!students.length" [strokeWidth]="5" [diameter]="40"></mat-spinner>
+</mat-card>
