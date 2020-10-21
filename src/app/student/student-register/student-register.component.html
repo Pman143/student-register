@@ -8,7 +8,7 @@
         <mat-error *ngIf="registerForm.get('studentName').errors?.required">
           {{studentNameRequired}}</mat-error>
       </mat-form-field>
-      <br><br>
+      <br>
 
       <mat-form-field [hintLabel]="'Enter Student Surname.'" class="field-width" appearance="outline">
         <mat-label>Student Surname</mat-label>
@@ -16,16 +16,16 @@
         <mat-error *ngIf="registerForm.get('studentSurname').errors?.required">
           {{studentSurnameRequired}}</mat-error>
       </mat-form-field>
-      <br><br>
+      <br>
 
       <mat-form-field class="my-textarea" appearance="outline">
         <mat-label>Student Residential Address</mat-label>
-        <textarea [rows]="5" matInput type="text" formControlName="studentResidentialAddress"></textarea>
+        <textarea [rows]="3" matInput type="text" formControlName="studentResidentialAddress"></textarea>
         <mat-hint align="start">{{'Enter Student Residential Address'}}</mat-hint>
         <mat-error *ngIf="registerForm.get('studentResidentialAddress').errors?.required">
           {{studentResidentialAddressRequired}}</mat-error>
       </mat-form-field>
-      <br><br>
+      <br>
 
       <mat-form-field class="field-width" appearance="outline">
         <mat-label>Student Contact Details</mat-label>
@@ -34,7 +34,7 @@
         <mat-error *ngIf="registerForm.get('studentContactDetails').errors?.required">
           {{studentContactDetailsRequired}}</mat-error>
       </mat-form-field>
-      <br><br>
+      <br>
 
       <mat-form-field class="field-width" appearance="outline">
         <mat-label>Student Registered Course</mat-label>
@@ -49,8 +49,7 @@
               [disabled]="registerForm.invalid"
               class="btn btn-dark submit-button" type="submit">Submit data
       </button>
-      <br>
-      <br>
+      <br><br>
       <div style="margin-left: 5%;" *ngIf="loadingStatus === 'LOADING'">
         <mat-spinner [strokeWidth]="5" [diameter]="40"></mat-spinner>
       </div>

@@ -1,7 +1,7 @@
 <mat-card style="width: 100%">
-  <h1>Registered student list</h1>
+  <h1>Registered student list <span *ngIf="students.length">({{students.length}})</span></h1>
   <mat-accordion displayMode="default" [hideToggle]="true" style="width: 90%;" *ngIf="students.length">
-    <mat-expansion-panel *ngFor="let student of students" [routerLink]="['../student-details']"
+    <mat-expansion-panel *ngFor="let student of students" [routerLink]="['../student-details', student.studentKey]"
                          style="margin-top: 2px;">
       <mat-expansion-panel-header>
         <div class="col-md-8">{{student.studentName}} {{student.studentSurname}}</div>

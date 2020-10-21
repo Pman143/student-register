@@ -43,8 +43,8 @@ export class StudentService {
     }));
   }
 
-  fetchStudentById(student: Student) {
-    return this.http.get<{ [key: string]: Student }>(`https://student-registration2.firebaseio.com/student/${student.studentKey}.json`)
+  fetchStudentById(studentKey: string) {
+    return this.http.get<{ [key: string]: Student }>(`https://student-registration2.firebaseio.com/student/${studentKey}.json`)
       .pipe(
         map(resData => {
           return resData;
@@ -52,8 +52,17 @@ export class StudentService {
       );
   }
 
-  removeStudent(student: Student) {
-    return this.http.delete(`https://student-registration2.firebaseio.com/student/${student.studentKey}.json`).pipe();
+  updateStudentDetails(student: Student, studentKey: string) {
+    return this.http.put(`https://student-registration2.firebaseio.com/student/${studentKey}.json`, student)
+      .pipe(
+        map(resData => {
+          return resData;
+        }, tap())
+      );
+  }
+
+  removeStudent(studentKey: string) {
+    return this.http.delete(`https://student-registration2.firebaseio.com/student/${studentKey}.json`).pipe();
   }
 
   openSnackBar(message: string, action: string) {
