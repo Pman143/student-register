@@ -119,6 +119,17 @@
               "devServerTarget": "student-register:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@jefiozie/ngx-aws-deploy:deploy",
+          "options": {},
+          "configurations": {
+            "production": {
+              "configuration": "production",
+              "region": "us-east-1",
+              "bucket": "student-register"
+            }
+          }
         }
       }
     }

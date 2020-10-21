@@ -2,6 +2,7 @@
   <mat-toolbar color="primary">
     <span style="cursor: pointer">Student Details</span>
     <span class="example-spacer"></span>
+    <span [routerLink]="['../../']" style="cursor: pointer">Student Register</span>
   </mat-toolbar>
   <br>
   <br>
@@ -51,25 +52,25 @@
         </mat-form-field>
         <br><br>
 
-        <button [hidden]="loadingStatus === 'LOADING'"
+        <button [hidden]="loadingStatus === statuses.loading"
                 (click)="onRemoveStudent()"
                 [disabled]="registerForm.invalid"
                 class="btn btn-dark submit-button" type="button">Remove Student
         </button>
 
-        <button [hidden]="loadingStatus === 'LOADING'"
+        <button [hidden]="loadingStatus === statuses.loading"
                 [disabled]="registerForm.invalid"
                 class="btn btn-dark submit-button" style="margin-left: 50px;" type="submit">Update Student Details
         </button>
         <br><br>
-        <div style="margin-left: 5%;" *ngIf="loadingStatus === 'LOADING'">
+        <div style="margin-left: 5%;" *ngIf="loadingStatus === statuses.loading">
           <mat-spinner [strokeWidth]="5" [diameter]="40"></mat-spinner>
         </div>
       </form>
     </mat-card>
   </div>
 
-  <div class="text-center text-info" *ngIf="loadingStatus === 'FETCHING_USER'">
+  <div class="text-center text-info" *ngIf="loadingStatus === statuses.fetchingUser">
     <mat-spinner style="margin: 0 auto;" [strokeWidth]="7" [diameter]="80"></mat-spinner>
     <br>
     Loading student information...

@@ -20,6 +20,11 @@ export class StudentDetailsComponent implements OnInit {
   loadingStatus: string;
   studentKey: string;
   selectedStudent: Student;
+  statuses = {
+    loading: 'LOADING',
+    fetchingUser: 'FETCHING_USER',
+    fetchedUser: 'FETCHED_USER'
+  };
 
   constructor(private fb: FormBuilder,
               private studentService: StudentService,
